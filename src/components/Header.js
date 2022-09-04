@@ -20,8 +20,8 @@ const Header = () => {
     {/* </HeaderSearch> */}
     <HeaderSearch>
         <SearchIcon>
-
         </SearchIcon>
+        <input placeholder='Search ...'> </input>
     </HeaderSearch>
 
     {/* <HeaderRight> */}
