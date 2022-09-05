@@ -85,10 +85,9 @@ const HeaderRight = styled.div`
     flex: 0.3;
     display: flex;
     align-items: flex-end;
-    > p {
-        display: flex;
-        align-items: center;
-        font-size: 14px;
+    > .MuiSvgIcon-root {
+        margin-left: auto;
+        margin-right: 20px;
     }
 `
 
