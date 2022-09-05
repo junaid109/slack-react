@@ -1,6 +1,12 @@
 import React from 'react'
+import { FiberManualRecordIcon, InboxIcon, DraftsIcon, BookmarkBorderIcon, FileCopyIcon, ExpandLessIcon, ExpandMoreIcon } from '@material-ui/icons'
+import styled from 'styled-components'
+import { useCollection } from 'react-firebase-hooks/firestore'
+ function Sidebar() {
 
-function Sidebar() {
+ const [channels, setChannels, loading, error] = useCollection(db.collection('rooms'))
+
+
   return (
     <SidebarContainer>
         <SidebarHeader>
@@ -26,7 +32,11 @@ function Sidebar() {
         <hr />
         <SidebarOption Icon={AddIcon} addChannelOption title="Add Channel" />
         {channels.map((channel) => (
-            <SidebarOption title={channel.name} id={channel.id} />
+            <SidebarOption 
+            key = {channel.id}
+            id = {channel.doc}
+            addChannelOption
+            title = {doc.data().name} />
         ))}
     </SidebarContainer>
   )
