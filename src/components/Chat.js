@@ -1,4 +1,4 @@
-import React from 'react'
+import React, {useEffect, useRef} from 'react'
 import styled from 'styled-components'
 import { InfoOutlinedIcon, StarBorderOutlinedIcon, MicIcon   } from '@material-ui/icons';
 import { useSelector } from 'react-redux';
@@ -7,6 +7,7 @@ import { selectRoomId } from './features/appSlice';
 
 function Chat() {
 
+    const chatRef = useRef(null);
     const roomId = useSelector(selectRoomId);
 
     const [roomDetails, setRoomDetails] = useDocument(
@@ -15,13 +16,21 @@ function Chat() {
             .doc(roomId)
     );
 
-    const [roomMessages, setRoomMessages] = useCollection(
+    const [roomMessages, loading] = useCollection(
         roomId && db
         .collection('rooms')
         .doc(roomId)
         .collection('messages')
         .orderBy('timestamp', 'asc')
     );
+
+    useEffect(() => {
+        chatRef?.current?.scrollIntoView({
+            behavior: "smooth",
+        });
+    }, [roomId, loading]);
+    
+
 
 
   return (
@@ -64,9 +73,14 @@ function Chat() {
             </Message>
         )
     })}
+    <ChatBottom ref={useRef}>
+    </ChatBottom>
+
     </ChatMessages>
      
-    <ChatInput channelName={roomDetails?.data().name} 
+    <ChatInput 
+    chatRef={chatRef}
+    channelName={roomDetails?.data().name} 
     channelId={roomId} />
 
 
@@ -122,7 +136,9 @@ const HeaderRight = styled.div`
 `
 
 const ChatMessages = styled.div``
-const ChatBottom = styled.div``
+const ChatBottom = styled.div`
+    padding-bottom: 200px;`
+
 const ChatInput = styled.div``
 const ChatInputContainer = styled.div``
 const ChatInputHeader = styled.div``
