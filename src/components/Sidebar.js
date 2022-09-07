@@ -35,7 +35,6 @@ import { useCollection } from 'react-firebase-hooks/firestore'
             <SidebarOption 
             key = {channel.id}
             id = {channel.doc}
-            addChannelOption
             title = {doc.data().name} />
         ))}
     </SidebarContainer>
