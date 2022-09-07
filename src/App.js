@@ -4,7 +4,7 @@ import Header from "./components/Header";
 import styled from "styled-components";
 import store from "./app/store";
 import { InsertCommentIcon, InboxIcon, DraftsIcon, BookmarkBorderIcon, PeopleAltIcon, AppsIcon, FileCopyIcon, ExpandLessIcon, ExpandMoreIcon, AddIcon } from '@material-ui/icons';
-
+import { Chat } from "./components/Chat";
 function App() {
   return (
     <Provider store={store}>
