@@ -1,8 +1,10 @@
 import React from 'react'
 import styled from 'styled-components'
+import { useDispatch } from 'react-redux'
 import { db } from './firebase'
 import { enterRoom } from '../features/appSlice'
-const SidebarOption = ({Icon, title, addChannel, id}) => {
+import { useCollection, useDocument } from 'react-firebase-hooks/firestore'
+const SidebarOption = ({Icon, title, addChannelOption, id}) => {
     const dispatch = useDispatch()
 
     const addChannel = () => {
@@ -26,6 +28,8 @@ const SidebarOption = ({Icon, title, addChannel, id}) => {
         }
 
     }
+    
+
     return (
         <SidebarOptionContainer onClick={addChannelOption ? addChannel : selectChannel}>
             {Icon && <Icon fontSize="small" style={{padding: 10}} />}
@@ -43,7 +47,7 @@ const SidebarOption = ({Icon, title, addChannel, id}) => {
 
 export default SidebarOption
 
-const SidebarOptionContainer = styled.div`
+const SidebarOptionContainer = styled.h3`
     display: flex;
     font-size: 12px;
     align-items: center;

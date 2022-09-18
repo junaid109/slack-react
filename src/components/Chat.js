@@ -4,6 +4,10 @@ import { InfoOutlinedIcon, StarBorderOutlinedIcon, MicIcon   } from '@material-u
 import { useSelector } from 'react-redux';
 import { useCollection, useDocument } from 'react-firebase-hooks/firestore';
 import { selectRoomId } from './features/appSlice';
+import Message from './Message';
+import MessageInfo from './MessageInfo';
+import ChatInput from './ChatInput';
+import { db } from './firebase';
 
 function Chat() {
 
@@ -132,6 +136,7 @@ const HeaderRight = styled.div`
     > p > .MuiSvgIcon-root {
         margin-right: 5px !important;
         font-size: 16px;
+
     }
 `
 
@@ -139,13 +144,3 @@ const ChatMessages = styled.div``
 const ChatBottom = styled.div`
     padding-bottom: 200px;`
 
-const ChatInput = styled.div``
-const ChatInputContainer = styled.div``
-const ChatInputHeader = styled.div``
-const ChatInputHeaderLeft = styled.div``
-const ChatInputHeaderRight = styled.div``
-const ChatInputBody = styled.div``
-const ChatInputFooter = styled.div``
-const ChatInputFooterLeft = styled.div``
-const ChatInputFooterRight = styled.div``
-const ChatInputFooterRightButton = styled.div``

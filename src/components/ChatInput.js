@@ -1,10 +1,10 @@
-import React, {useState, useRef} from 'react'
+import React, {useState, useRef, inputRef} from 'react'
 import styled from 'styled-components'
 import { Button } from '@material-ui/core'
 import { db } from './firebase';
 import { firebase } from 'firebase';
 
-function ChatInput({channelName, channelId, chatRef }) {
+function ChatInput({channelName, channelId, chatRef, user }) {
     const [input, setInput] = useState("");
 
 
@@ -32,8 +32,7 @@ function ChatInput({channelName, channelId, chatRef }) {
 
         setInput("");
 
-    }
-
+    
 
     
   return (
@@ -51,8 +50,12 @@ function ChatInput({channelName, channelId, chatRef }) {
             </Button>
     </form>
     </ChatInputContainer>
-  )
+    )
+
+
 }
+
+
 
 export default ChatInput
 

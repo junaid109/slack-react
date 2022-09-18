@@ -3,8 +3,17 @@ import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import Header from "./components/Header";
 import styled from "styled-components";
 import store from "./app/store";
-import { InsertCommentIcon, InboxIcon, DraftsIcon, BookmarkBorderIcon, PeopleAltIcon, AppsIcon, FileCopyIcon, ExpandLessIcon, ExpandMoreIcon, AddIcon } from '@material-ui/icons';
+import { InsertCommentIcon, InboxIcon, DraftsIcon, BookmarkBorderIcon, PeopleAltIcon, AppsIcon, FileCopyIcon, ExpandLessIcon, ExpandMoreIcon, AddIcon, StoreMallDirectoryOutlined } from '@material-ui/icons';
 import { Chat } from "./components/Chat";
+import { Provider } from 'react-redux';
+import Sidebar from './components/Sidebar';
+import SidebarContainer from "./components/SidebarContainer";
+import SidebarHeader from "./components/SidebarHeader";
+import SidebarInfo from "./components/SidebarInfo";
+import FiberManualRecordIcon from '@material-ui/icons/FiberManualRecord';
+import CreateIcon from '@material-ui/icons/Create';
+import SidebarOption from './SidebarOption';
+
 function App() {
   return (
     <Provider store={store}>
@@ -36,7 +45,7 @@ function App() {
             <SidebarOption Icon={ExpandMoreIcon} title="Channels" />
             <hr />
             <SidebarOption Icon={AddIcon} addChannelOption title="Add Channel" />
-            {channels.map((channel) => (
+            {store.map((channel) => (
               <SidebarOption title={channel.name} id={channel.id} />
             ))}
           </SidebarContainer>

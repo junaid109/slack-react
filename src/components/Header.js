@@ -3,7 +3,6 @@ import { styled } from '@material-ui/core'
 import { Avatar } from '@material-ui/core'
 import { AccessTimeIcon } from '@material-ui/icons'
 import { SearchIcon } from '@material-ui/icons/Search';
-import styled from 'styled-components'
 
 const Header = () => {
   return (
