@@ -4,11 +4,13 @@ import styled from 'styled-components'
 import { useCollection } from 'react-firebase-hooks/firestore'
 import { CreateIcon } from '@material-ui/icons/Create';
 import db from './firebase'
-
+import { useAuthState } from 'react-firebase-hooks/auth';
+import { auth, user } from './firebase';
+ 
  function Sidebar() {
 
  const [channels, setChannels, loading, error] = useCollection(db.collection('rooms'))
-
+ const [user] = useAuthState(auth)
 
   return (
     <SidebarContainer>
