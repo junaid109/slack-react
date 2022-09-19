@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useAuthState } from "react";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import Header from "./components/Header";
 import styled from "styled-components";
@@ -9,15 +9,21 @@ import { Provider } from 'react-redux';
 import Sidebar from './components/Sidebar';
 import SidebarContainer from "./components/SidebarContainer";
 import SidebarHeader from "./components/SidebarHeader";
-import SidebarInfo from "./components/SidebarInfo";
+import SidebarInfo from  "./components/SidebarInfo";
 import FiberManualRecordIcon from '@material-ui/icons/FiberManualRecord';
 import CreateIcon from '@material-ui/icons/Create';
 import SidebarOption from './SidebarOption';
-
+import { auth } from "./firebase";
+import { Login } from "./components/Login";
+ 
 function App() {
+  const [user, loading] = useAuthState(auth);
   return (
     <Provider store={store}>
       <Router>
+      {!user ? (
+       <Login />
+      ) : (
       <>
       <Header/>
       <AppBody>
@@ -59,7 +65,7 @@ function App() {
           </Route>
         </Switch>
       </AppBody>
-  
+      )}        
       </>
     </Router>
     </Provider>

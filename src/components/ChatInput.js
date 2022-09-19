@@ -1,12 +1,12 @@
-import React, {useState, useRef, inputRef} from 'react'
+import React, {useState, useRef} from 'react'
 import styled from 'styled-components'
 import { Button } from '@material-ui/core'
 import { db } from './firebase';
 import { firebase } from 'firebase';
 
 function ChatInput({channelName, channelId, chatRef, user }) {
+    const inputRef = useRef(null);
     const [input, setInput] = useState("");
-
 
     const sendMessage = (e) => {
         e.preventDefault();
@@ -29,12 +29,8 @@ function ChatInput({channelName, channelId, chatRef, user }) {
         });
     };
     
+    setInput("");
 
-        setInput("");
-
-    
-
-    
   return (
     
     <ChatInputContainer>
@@ -87,4 +83,5 @@ const InputContainer = styled.div`
     color: gray;
     border-radius: 3px;
 `
+
 

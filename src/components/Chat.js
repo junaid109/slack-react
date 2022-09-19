@@ -1,6 +1,6 @@
-import React, {useEffect, useRef} from 'react'
+import React, { useEffect, useRef } from 'react'
 import styled from 'styled-components'
-import { InfoOutlinedIcon, StarBorderOutlinedIcon, MicIcon   } from '@material-ui/icons';
+import { InfoOutlinedIcon, StarBorderOutlinedIcon, MicIcon } from '@material-ui/icons';
 import { useSelector } from 'react-redux';
 import { useCollection, useDocument } from 'react-firebase-hooks/firestore';
 import { selectRoomId } from './features/appSlice';
@@ -10,7 +10,6 @@ import ChatInput from './ChatInput';
 import { db } from './firebase';
 
 function Chat() {
-
     const chatRef = useRef(null);
     const roomId = useSelector(selectRoomId);
 
@@ -35,10 +34,11 @@ function Chat() {
     }, [roomId, loading]);
     
 
-
-
   return (
     <ChatContainer >
+    (roomDetails && roomMessages) && (
+        
+    <>
     <Header>
         <HeaderLeft>
             <h4>
@@ -51,21 +51,18 @@ function Chat() {
                 <InfoOutlinedIcon /> Details
             </p>    
         </HeaderRight>
-
     </Header>
 
     <ChatMessages>
     {roomMessages?.docs.map(doc => {
         const { message, timestamp, user, userImage } = doc.data();
-
         return (
             <Message >
                 <img src={userImage} alt="" />
                 <MessageInfo>key={doc.id} 
                 message={message}
                 timestamp={timestamp}
-                user={user}
-                
+                user={user}             
                     <h4>
                         {user} {' '}
                         <span>
@@ -79,19 +76,14 @@ function Chat() {
     })}
     <ChatBottom ref={useRef}>
     </ChatBottom>
-
-    </ChatMessages>
-     
+    </ChatMessages>   
     <ChatInput 
     chatRef={chatRef}
     channelName={roomDetails?.data().name} 
     channelId={roomId} />
-
-
-    
+    </>
     </ChatContainer>
-
-  )
+  );
 }
 
 export default Chat
