@@ -3,7 +3,7 @@ import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import Header from "./components/Header";
 import styled from "styled-components";
 import store from "./app/store";
-import { InsertCommentIcon, InboxIcon, DraftsIcon, BookmarkBorderIcon, PeopleAltIcon, AppsIcon, FileCopyIcon, ExpandLessIcon, ExpandMoreIcon, AddIcon, StoreMallDirectoryOutlined } from '@material-ui/icons';
+import { InsertComment, Inbox, Drafts, BookmarkBorder, PeopleAlt, Apps, FileCopy, ExpandLess, ExpandMore, Add, StoreMallDirectoryOutlined } from '@material-ui/icons';
 import { Chat } from "./components/Chat";
 import { Provider } from 'react-redux';
 import Sidebar from './components/Sidebar';
@@ -12,7 +12,7 @@ import SidebarHeader from "./components/SidebarHeader";
 import SidebarInfo from  "./components/SidebarInfo";
 import FiberManualRecordIcon from '@material-ui/icons/FiberManualRecord';
 import CreateIcon from '@material-ui/icons/Create';
-import SidebarOption from './SidebarOption';
+import SidebarOption from './components/SidebarOption';
 import { auth } from "./firebase";
 import { Login } from "./components/Login";
 import Spinner from "react-spinkit";
@@ -56,18 +56,18 @@ function App() {
               </SidebarInfo>
               <CreateIcon />
             </SidebarHeader>
-            <SidebarOption Icon={InsertCommentIcon} title="Threads" />
-            <SidebarOption Icon={InboxIcon} title="Mentions & reactions" />
-            <SidebarOption Icon={DraftsIcon} title="Saved items" />
-            <SidebarOption Icon={BookmarkBorderIcon} title="Channel browser" />
-            <SidebarOption Icon={PeopleAltIcon} title="People & user groups" />
-            <SidebarOption Icon={AppsIcon} title="Apps" />
-            <SidebarOption Icon={FileCopyIcon} title="File browser" />
-            <SidebarOption Icon={ExpandLessIcon} title="Show less" />
+            <SidebarOption Icon={InsertComment} title="Threads" />
+            <SidebarOption Icon={Inbox} title="Mentions & reactions" />
+            <SidebarOption Icon={Drafts} title="Saved items" />
+            <SidebarOption Icon={BookmarkBorder} title="Channel browser" />
+            <SidebarOption Icon={PeopleAlt} title="People & user groups" />
+            <SidebarOption Icon={Apps} title="Apps" />
+            <SidebarOption Icon={FileCopy} title="File browser" />
+            <SidebarOption Icon={ExpandLess} title="Show less" />
             <hr />
-            <SidebarOption Icon={ExpandMoreIcon} title="Channels" />
+            <SidebarOption Icon={ExpandMore} title="Channels" />
             <hr />
-            <SidebarOption Icon={AddIcon} addChannelOption title="Add Channel" />
+            <SidebarOption Icon={Add} addChannelOption title="Add Channel" />
             {store.map((channel) => (
               <SidebarOption title={channel.name} id={channel.id} />
             ))}
